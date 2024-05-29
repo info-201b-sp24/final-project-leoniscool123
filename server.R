@@ -19,4 +19,33 @@ server <- function(input, output) {
         yaxis = list(range = c(input$y_axis[1], input$y_axis[2]))
       )
   })
+  
+  output$chart3 <- renderPlotly({
+    sleep_data <- read.csv("sleep75.csv");
+    
+    gender_input <- substring(input$gender , 1,1)
+    age_bound <- input$age_slider[1]
+    sleep_hours <- input$hours_slept[1]
+    # age_max_bound <- input$age_slider[2]
+    
+    
+    average_sleep_expr <- sleep_data %>% 
+      group_by(exper) %>% 
+      filter(male == gender_input) %>% 
+      filter(age > age_bound ) %>% 
+      summarize(avg_totwrk = mean(totwrk), na.rm = TRUE)
+    
+    
+    
+    
+    chart_3 <- ggplot(average_sleep_expr, aes(x = exper, y =   avg_totwrk/60/5)) + 
+      geom_line(color = "blue") + 
+      labs(title = "Correlation between Exeperience and Hours Worked Per Day",
+           x = "Experiece",
+           y = "Hours Worked Per Day" )
+    
+    ggplotly(chart_3) 
+    
+  })
+
 }

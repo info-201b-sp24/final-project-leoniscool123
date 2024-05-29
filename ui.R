@@ -195,8 +195,39 @@ bar_panel <- tabPanel(
   bar_main_content
 )
 
+chart3title <- titlePanel("How Experience Relates To Total Hours Worked")
 
+gender_dropdown <- sidebarPanel(
+  selectInput(
+    inputId = "gender",
+    label = "Gender",
+    choices = c(
+      "0 - Female",
+      "1 - Male"
+    ),
+    selected = "",
+  )
+)
 
+age_slider <- sidebarPanel(
+  sliderInput("age_slider", "Select An Age Range", min = 10, max = 60, value = 10)
+)
+
+chart3sidebar <- sidebarLayout(
+  age_slider,
+  gender_dropdown
+)
+
+chart3main_content <- mainPanel(
+  plotlyOutput("chart3")
+)
+
+chart3_panel <- tabPanel(
+  "Experience vs. Hours Worked",
+  chart3title, 
+  chart3sidebar, 
+  chart3main_content
+)
 
 
 concl_panel <- tabPanel(
@@ -220,5 +251,6 @@ ui <- navbarPage(
   theme = shinytheme("cerulean"),
   intro_panel,
   bar_panel,
+  chart3_panel,
   concl_panel
 )
