@@ -41,7 +41,7 @@ server <- function(input, output) {
     chart_3 <- ggplot(average_sleep_expr, aes(x = exper, y =   avg_totwrk/60/5)) + 
       geom_line(color = "blue") + 
       labs(title = "Correlation between Exeperience and Hours Worked Per Day",
-           x = "Experiece",
+           x = "Experience",
            y = "Hours Worked Per Day" )
     
     ggplotly(chart_3) 
