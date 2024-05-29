@@ -2,6 +2,7 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
+library(dplyr)
 
 # Introduction page
 intro_panel <- tabPanel(
@@ -151,20 +152,19 @@ being made through a person’s characteristics and their sleep behavior which c
 )
 
 
-bar_title <- titlePanel("Natural Logarithm of Wages Compared to Sleep")
+chart_2_title <- titlePanel("Natural Logarithm of Wages Compared to Sleep")
+chart_2_min <- sliderInput("x_axis", "Minutes", min = 0, max = 5000, value = c(0, 5000))
 
-bar_min <- sliderInput("x_axis", "Minutes", min = 0, max = 5000, value = c(0, 5000))
-
-bar_wage <- sliderInput("y_axis", "Natural Logarithmic Wage", min = -1.2, max = 3.7, value = c(-1.2, 3.7))
+chart_2_wage <- sliderInput("y_axis", "Natural Logarithmic Wage", min = -1.2, max = 3.7, value = c(-1.2, 3.7))
 
 
-bar_sidebar <- sidebarPanel(
-  bar_min,
-  bar_wage
+chart_2_sidebar <- sidebarPanel(
+  chart_2_min,
+  chart_2_wage
 )
 
 
-bar_main_content <- mainPanel(
+chart_2_main_content <- mainPanel(
   plotlyOutput("scatterPlot"),
   fluidRow(
     column(12,
@@ -188,11 +188,11 @@ bar_main_content <- mainPanel(
 
 
 
-bar_panel <- tabPanel(
+chart_2_panel <- tabPanel(
   "Wage vs Sleep",
-  bar_title,
-  bar_sidebar,
-  bar_main_content
+  chart_2_title,
+  chart_2_sidebar,
+  chart_2_main_content
 )
 
 chart3title <- titlePanel("How Experience Relates To Total Hours Worked")
@@ -250,7 +250,7 @@ ui <- navbarPage(
   "Sleep vs. Work",
   theme = shinytheme("cerulean"),
   intro_panel,
-  bar_panel,
+  chart_2_panel,
   chart3_panel,
   concl_panel
 )
