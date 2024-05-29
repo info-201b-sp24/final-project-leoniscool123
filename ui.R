@@ -154,6 +154,15 @@ being made through a person’s characteristics and their sleep behavior which c
                                             with our data.")),
 )
 
+chart_1_title <- titlePanel("REPLACE WITH CHART 1 TITLE")
+
+# ADD WIDGETS
+
+#REFERNCE chart2_min and chart2_sidebar and chart2_main_content for how to format rest of chart
+
+chart_1_panel <- tabPanel(
+  "TAB TITLE HERE"
+)
 
 chart_2_title <- titlePanel("Natural Logarithm of Wages Compared to Sleep")
 chart_2_min <- sliderInput("x_axis", "Minutes", min = 0, max = 5000, value = c(0, 5000))
@@ -260,6 +269,7 @@ ui <- navbarPage(
   "Sleep vs. Work",
   theme = shinytheme("cerulean"),
   intro_panel,
+  chart_1_panel,
   chart_2_panel,
   chart3_panel,
   concl_panel
