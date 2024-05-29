@@ -2,7 +2,6 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
-library(dplyr)
 
 # Introduction page
 intro_panel <- tabPanel(
@@ -20,8 +19,8 @@ intro_panel <- tabPanel(
     amount of sleep, age, time spent on work, etc.. We are concerned with this because there is a notion that wealthy people 
     give up sleep to further their careers so we plan to analyze the data, and compare how work-life balance affects sleep patterns. 
 "))),
-    titlePanel("Intro"),
-    p(style = "font-size:16px;", strong("This project aims to find a correlation between the amount of sleep a person gets and work. 
+  titlePanel("Intro"),
+  p(style = "font-size:16px;", strong("This project aims to find a correlation between the amount of sleep a person gets and work. 
                                         Does age increase or decrease the amount of sleep a person gets? How does the nature of one's 
                                         job, particularly the level of work experience, affect sleep patterns? We will be exploring 
                                         these questions to challenge the notion often perpetuated by successful individuals that sacrificing 
@@ -35,8 +34,8 @@ intro_panel <- tabPanel(
                                         different levels of work experience impact sleep, thereby guiding individuals towards finding a sleep 
                                         schedule that is both healthy and conducive to their career goals.")),
   
-     titlePanel("Related Work"),
-    p(style = "font-size:16px;", strong("In our study we aim to see the relationship between a person’s age, and  work-life, minutes worked, salary, 
+  titlePanel("Related Work"),
+  p(style = "font-size:16px;", strong("In our study we aim to see the relationship between a person’s age, and  work-life, minutes worked, salary, 
     and how it correlates to their sleep. There are a few articles/ research papers that look into the correlation between sleep and work and vice versa. 
     These research articles focus on how sleep affects wages, as well as how long work hours can affect your sleep. This shows a two way relationship on 
     how better sleep can improve your job, but also how your job life can affect your sleep. This is an important connection to learn about as sleep is 
@@ -49,21 +48,25 @@ intro_panel <- tabPanel(
 Linked Below are 3 research papers that discuss similar correlations…
 
 *  Choi, H., Lee, S., Jeon, M.-J., & Min, Y.-S. (2020, November 3). Relationship between long work hours and self-reported sleep disorders of non-shift 
-daytime wage workers in South Korea: Data from the 5th Korean Working Conditions Survey. Annals of occupational and environmental medicine. 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7779839/
+daytime wage workers in South Korea: Data from the 5th Korean Working Conditions Survey. Annals of occupational and environmental medicine.",
+                                      HTML(paste0(a("National Institute of Health", href = "ttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC7779839/"), ",")),
+                                      
+                                      
+                                      " * Gibson, M., & Shrader, J. (2018, December 1). Time use and labor productivity: The returns to sleep. MIT Press.",
+                                      HTML(paste0(a("MIT Press Direct", href = "https://direct.mit.edu/rest/article/100/5/783/58488/Time-Use-and-Labor-Productivity-The-Returns-to_sleep"), ",")),
+                                      
+                                      
+                                      " *  Sedigh G;Devlin RA;Grenier G;Deri Armstrong C; (n.d.). Revisiting the relationship between wages and sleep duration: 
+The role of insomnia. Economics and human biology.",
+                                      HTML(paste0(a("National Institute Of Health", href = "https://pubmed.ncbi.nlm.nih.gov/27987490/
+"), ",")),
+  )),
+  titlePanel("The Dataset"),
+  p(style = "font-size:16px;", strong("> Where did you find the data? Please include a link to the data source  
 
-*  Gibson, M., & Shrader, J. (2018, December 1). Time use and labor productivity: The returns to sleep. MIT Press. 
-https://direct.mit.edu/rest/article/100/5/783/58488/Time-Use-and-Labor-Productivity-The-Returns-to_sleep
+* The data set we’re using was found on",  HTML(paste0(a("Kaggle", href = "https://www.kaggle.com/datasets/kapturovalexander/sleep-patterns/data"), ",")), 
 
-*  Sedigh G;Devlin RA;Grenier G;Deri Armstrong C; (n.d.). Revisiting the relationship between wages and sleep duration: 
-The role of insomnia. Economics and human biology. https://pubmed.ncbi.nlm.nih.gov/27987490/
-")),
-    titlePanel("The Dataset"),
-    p(style = "font-size:16px;", strong("> Where did you find the data? Please include a link to the data source  
-
-* The data set we’re using was found on [Kaggle](https://www.kaggle.com/datasets/kapturovalexander/sleep-patterns?resource=download)
-
-> Who collected the data?  
+" > Who collected the data?  
  
 * The data was collected by Alexander Kapturov
 
@@ -219,7 +222,14 @@ chart3sidebar <- sidebarLayout(
 )
 
 chart3main_content <- mainPanel(
-  plotlyOutput("chart3")
+  plotlyOutput("chart3"),
+  fluidRow(
+    column(12,
+           p("This chart allows us to see if people work more/less or if there is no change as they get more experienced. This allows us to understand the work balance as people get older and go further in the industry. It also lets us relate the graphs through the connection between age and experience.
+           If we understand what factors lead people to work more, sleep less, we can have an easier time remidying those changes. We see as the experience goes up the amount hours works tends to go down, but this change happens more near the end of the plot. People tend to work less as they gain more experience.  We also know that there is a relationship between age and experience through prior experiences.  As age increases so does ones experience. We can use this to relate to the first graph. Our Chart 1 tells us that as age increases so does the hours slept. That means as age goes up so does experience and people sleep and work less. This leans us to the conclusion that people who work more with more experience in their job, gain a better work-life balance.
+")
+    )
+  )
 )
 
 chart3_panel <- tabPanel(
