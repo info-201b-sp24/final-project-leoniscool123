@@ -5,7 +5,7 @@ library(dplyr)
 
 intro_panel <- tabPanel(
   "Introduction",
-  img(src = "sleep_pic.jpg"),
+  img(src = "sleep_pic.jpg", width = '600px', height = '300px'),
   titlePanel("Introduction"),
   p(
     style = "font-size:18px;", strong("Team Members:"),
