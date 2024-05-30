@@ -1,8 +1,30 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
+library(dplyr)
+library(tidyverse)
 
 server <- function(input, output) {
+  
+  output$chart1 <- renderPlotly({
+    sleep_data <- read.csv("sleep75.csv");
+    
+    average_sleep_age <- sleep_data %>% 
+      group_by(age) %>% 
+      summarize(avg_sleep = mean(sleep))
+    chart_1 <- ggplot(average_sleep_age, aes(x = age, y =  (avg_sleep/60)/7)) + 
+      geom_line(color = "red") + 
+      labs(title = "Correlation Between Age and Hours Slept Per Day",
+           x = "Age",
+           y = "Average Hours Slept Per Day")
+    
+    ggplotly(chart_1) %>%
+      layout(
+        xaxis = list(range = c(input$z_axis[1], input$z_axis[2]))
+      )
+    
+  })
+  
   output$scatterPlot <- renderPlotly({
     sleep_data <- read.csv("sleep75.csv");
     chart_2_plt <- ggplot(sleep_data, aes(x = sleep, y = lhrwage)) + 

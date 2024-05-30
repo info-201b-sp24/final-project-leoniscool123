@@ -154,14 +154,29 @@ being made through a person’s characteristics and their sleep behavior which c
                                             with our data.")),
 )
 
-chart_1_title <- titlePanel("REPLACE WITH CHART 1 TITLE")
+chart_1_title <- titlePanel("Correlation Between Age and Average Hours Slept Per Day")
 
-# ADD WIDGETS
+chart_1_age <- sliderInput("z_axis", "Age (years)", min = 23, max = 64, value = c(23, 64))
 
+chart_1_sidebar <- sidebarPanel(
+  chart_1_age
+)
+
+chart_1_main_content <- mainPanel(
+  plotlyOutput("chart1"),
+  fluidRow(
+    column(12,
+        p("There are multiple reasons we added this chart. The main question that we want to answer is the factors that impact a work-life balance across multiple age groups. Through prior analysis we know that there is a correlation between age and experience. As the age of a person increases, so does their experience. So through this chart, not only can we see how different ages have different sleep preferences, but also the sleeping habits of older more experienced people. From the lines in the graph you can see that as the age increases, we see a increase in the number of hours slept on average. This leans us to a conclusions that shows how, as you the older, with more experience, the number of hours you sleep increases. Going back our question on hand we can see how different people in the industry have different sleep factors and habits")
+    )
+  )
+)
 #REFERNCE chart2_min and chart2_sidebar and chart2_main_content for how to format rest of chart
 
 chart_1_panel <- tabPanel(
-  "TAB TITLE HERE"
+  "Age and Sleep",
+  chart_1_title,
+  chart_1_sidebar,
+  chart_1_main_content
 )
 
 chart_2_title <- titlePanel("Natural Logarithm of Wages Compared to Sleep")
