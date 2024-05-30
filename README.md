@@ -1,7 +1,7 @@
-# Title of Your Final Project Here 
+# Sleep vs. Work
 ## INFO 201 "Foundational Skills for Data Science"
 
-Authors: Your names here
+Authors: Leon Nguyen, Samarth Rao, Nicholas Chung, Jonathan Cao
 
 
 For the Final Project -- Data Wrangling, add the following to this code repository:
@@ -11,17 +11,10 @@ For the Final Project -- Data Wrangling, add the following to this code reposito
 * Data Nutrition Label (pdf) 
 
 
-**Link: Link to your Shiny App here**
-
-Please create the necessary files for your multi-page Shiny app in this GitHub repository. Consult the Canvas assignment for more details. Be sure to publish your app on Shinyapps.io.
-
-When you are finished, please add the text from your introductory and concluding pages below. You might want to use this GitHub repository as part of your digital portfolio, so you want this README.md to offer a brief description of the project and key takeaways.
-
-Feel free to delete these instructions for your final README.md file and to make your GitHub repository public if you would like others to be able to see it. 
+**Link: [https://leoniscool123.shinyapps.io/final-project-leoniscool123/]**
 
 # Introduction
-
-
+This project aims to find a correlation between the amount of sleep a person gets and work. Does age increase or decrease the amount of sleep a person gets? How does the nature of one's job, particularly the level of work experience, affect sleep patterns? We will be exploring these questions to challenge the notion often perpetuated by successful individuals that sacrificing sleep is necessary to maximize career potential. On social media, it's common to see influential business people, often making six-figure salaries, advocating for waking up before dawn and maintaining a sleep schedule that includes only 4-6 hours of rest per night, far below the amount recommended by scientists. These influencers swear by their schedules and guarantee success to those who follow their routines. However, this project seeks to explore the potential negative effects of such advice, especially for young, impressionable viewers. Consistently sacrificing sleep can impair daily functioning and long-term health. By answering these questions, we hope to provide a clearer understanding of how different levels of work experience impact sleep, thereby guiding individuals towards finding a sleep schedule that is both healthy and conducive to their career goals.
 
 # Conclusion / Summary Takeaways
-
+Our investigation into the link between sleep, work, age, and experience revealed numerous major findings that call into question prevalent assumptions about work-life balance and productivity. First, we discovered a positive relationship between age and the average number of hours slept per day. Older adults tend to sleep more, implying that as people age and gain experience, they learn to value sleep and recognize its relevance for general health and productivity. This conclusion is significant because it contradicts the commonly held view that sacrificing sleep is required for job progress, which is regularly encouraged by powerful corporate personalities. Second, our findings demonstrated an inverse link between work experience and the amount of hours worked each day. Individuals with more experience tend to work fewer hours due to improved efficiency and experience. This insight emphasizes that gaining expertise over time can lead to a better work-life balance, since experienced employees can produce the same or better results in less time than their less experienced colleagues. This conclusion highlights the importance of experience and proposes that businesses explore policies that promote efficiency and productivity rather than just hours spent. Finally, our analysis of salaries and sleep patterns found that people who slept approximately 7.4 hours per day earn greater wages. This emphasizes the necessity of getting enough sleep for job performance and profitability. However, the presence of outliers in the data implies that individual differences in sleep requirements and work habits can also result in positive consequences. Despite getting less sleep, some people function well and earn high earnings, while others get more sleep and have a healthy work-life balance. These findings highlight the importance of prioritizing sleep and efficiency in the job. They recommend that both individuals and policymakers endeavor to promote a good work-life balance in order to increase productivity and well-being. Employers could consider creating regulations that promote proper rest and acknowledge the importance of experience and efficiency above sheer hours spent. This allows them to create a more productive, healthier, and contented staff.
