@@ -1,15 +1,14 @@
-# Load libraries
 library(shiny)
 library(shinythemes)
 library(plotly)
+library(dplyr)
 
-# Introduction page
 intro_panel <- tabPanel(
   "Introduction",
   img(src = "sleep_pic.jpg"),
   titlePanel("Introduction"),
   p(
-    style = "font-size:18px;", strong("Team Members"),
+    style = "font-size:18px;", strong("Team Members:"),
     "Leon Nguyen, Samarth Rao, Nicholas Chung, Jonathan Cao"
   ),
   p(
@@ -43,59 +42,86 @@ intro_panel <- tabPanel(
     benefit many in the industry who don’t have a good work-life balance. The first paper discusses work-life balance in South Korea, which is an interesting
     topic because of their different work values from those in the US. The second paper focuses on giving up working time for sleep is beneficial to efficiency 
     and how more workplaces should adopt this strategy. The third paper focuses on the relationship between wages and sleep duration, whether that be increasing 
-    or decreasing alongside one another.
-
-Linked Below are 3 research papers that discuss similar correlations…
-
-*  Choi, H., Lee, S., Jeon, M.-J., & Min, Y.-S. (2020, November 3). Relationship between long work hours and self-reported sleep disorders of non-shift 
+    or decreasing alongside one another." )),
+  
+  p(style = "font-size:16px;", strong("Linked Below are 3 research papers that discuss similar correlations…")),
+  
+  
+  p(style = "font-size:16px;", strong(" *  Choi, H., Lee, S., Jeon, M.-J., & Min, Y.-S. (2020, November 3). Relationship between long work hours and self-reported sleep disorders of non-shift 
 daytime wage workers in South Korea: Data from the 5th Korean Working Conditions Survey. Annals of occupational and environmental medicine.",
-                                      HTML(paste0(a("National Institute of Health", href = "ttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC7779839/"), ",")),
-                                      
-                                      
-                                      " * Gibson, M., & Shrader, J. (2018, December 1). Time use and labor productivity: The returns to sleep. MIT Press.",
-                                      HTML(paste0(a("MIT Press Direct", href = "https://direct.mit.edu/rest/article/100/5/783/58488/Time-Use-and-Labor-Productivity-The-Returns-to_sleep"), ",")),
-                                      
-                                      
-                                      " *  Sedigh G;Devlin RA;Grenier G;Deri Armstrong C; (n.d.). Revisiting the relationship between wages and sleep duration: 
+                                      HTML(paste0(a("National Institute of Health", href = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7779839/"), ".")), )),
+  
+  
+  p(style = "font-size:16px;", strong(" * Gibson, M., & Shrader, J. (2018, December 1). Time use and labor productivity: The returns to sleep. MIT Press.",
+                                      HTML(paste0(a("MIT Press Direct", href = "https://direct.mit.edu/rest/article/100/5/783/58488/Time-Use-and-Labor-Productivity-The-Returns-to_sleep"), ".")), )),
+  
+  
+  p(style = "font-size:16px;", strong(" *  Sedigh G;Devlin RA;Grenier G;Deri Armstrong C; (n.d.). Revisiting the relationship between wages and sleep duration: 
 The role of insomnia. Economics and human biology.",
-                                      HTML(paste0(a("National Institute Of Health", href = "https://pubmed.ncbi.nlm.nih.gov/27987490/
-"), ",")),
+                                      HTML(paste0(a("National Institute Of Health", href = "https://pubmed.ncbi.nlm.nih.gov/27987490/"), ".")),
   )),
+  
+  
   titlePanel("The Dataset"),
-  p(style = "font-size:16px;", strong("> Where did you find the data? Please include a link to the data source  
-
-* The data set we’re using was found on",  HTML(paste0(a("Kaggle", href = "https://www.kaggle.com/datasets/kapturovalexander/sleep-patterns/data"), ",")), 
-
-" > Who collected the data?  
- 
-* The data was collected by Alexander Kapturov
-
-> How was the data collected or generated?  
-
-* While we do not know the exact reason this dataset was collected, we can make an educated guess that this dataset was collected using surveys, 
-or crowdsourcing to efficiently collect different data from a large sample group.
-
-> Why was the data collected?  
-
-* Just like the previous question we do not have an exact answer, but we can assume that this dataset was to correlate how different factors 
-and sleep are related to understand what can affect our sleep. 
-
->How many observations (rows) are in your data?  
-
-* There are 706 rows in this dataset.
-
-> How many features (columns) are in the data?  
-
-* There are 34 columns in this dataset.
-
-> What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-
-* While working with this dataset, we need to make sure that we don’t create biased analysis as this could lead to incorrect assumptions 
-being made through a person’s characteristics and their sleep behavior which could be detrimental when those groups are trying to improve sleep habits. 
-
-> What are possible limitations or problems with this data?  
-
-* One possible limitation with this data is that we are unable to consider specific professions when analyzing the dataset. Since this feature 
+  p(style = "font-size:16px;", strong("> Where did you find the data? Please include a link to the data source",
+                                      br(), br(),
+                                      
+                                      "The data set we’re using was found on",  HTML(paste0(a("Kaggle", href = "https://www.kaggle.com/datasets/kapturovalexander/sleep-patterns/data"), ".")), 
+                                      br(), br(),
+                                      " > Who collected the data?",
+                                      br(), br(),
+                                      
+                                      "The data was collected by Alexander Kapturov",
+                                      
+                                      br(), br(),
+                                      
+                                      "> How was the data collected or generated?",
+                                      
+                                      br(), br(),
+                                      
+                                      "While we do not know the exact reason this dataset was collected, we can make an educated guess that this dataset was collected using surveys, 
+or crowdsourcing to efficiently collect different data from a large sample group.",
+                                      
+                                      br(), br(),
+                                      
+                                      "> Why was the data collected?",
+                                      
+                                      br(), br(),
+                                      
+                                      "Just like the previous question we do not have an exact answer, but we can assume that this dataset was to correlate how different factors 
+and sleep are related to understand what can affect our sleep.",
+                                      
+                                      br(), br(),
+                                      
+                                      
+                                      ">How many observations (rows) are in your data?",
+                                      
+                                      br(), br(),
+                                      
+                                      "There are 706 rows in this dataset.",
+                                      
+                                      br(), br(),
+                                      
+                                      "> How many features (columns) are in the data?", 
+                                      
+                                      br(), br(),
+                                      
+                                      " There are 34 columns in this dataset.",
+                                      
+                                      br(), br(),
+                                      
+                                      " > What, if any, ethical questions or questions of power do you need to consider when working with this data?",
+                                      br(), br(),
+                                      
+                                      "While working with this dataset, we need to make sure that we don’t create biased analysis as this could lead to incorrect assumptions 
+being made through a person’s characteristics and their sleep behavior which could be detrimental when those groups are trying to improve sleep habits.",
+                                      br(), br(),
+                                      
+                                      "> What are possible limitations or problems with this data?",
+                                      
+                                      br(), br(),
+                                      
+                                      "One possible limitation with this data is that we are unable to consider specific professions when analyzing the dataset. Since this feature 
                                         is not included in the dataset, we instead need to analyze the amount of sleep with other relevant 
                                         features such as time spent working. Another possible problem with this dataset is the noise (or outliers) 
                                         in the dataset. Since it is very common for datasets to include outliers, these outliers may cause the results 
@@ -107,8 +133,8 @@ being made through a person’s characteristics and their sleep behavior which c
                                         on average higher. For example, Country A may have an extremely high average wage whereas Country B may have a 
                                         lower average wage, however, if the dataset was collected from Country A it may lead us to believe that a higher
                                         wage has a much larger effect on the amount of sleep than it actually does.")),
-      titlePanel("Possible Limitations"),
-      p(style = "font-size:16px;", strong("One possible limitation with this data is that we are unable to consider specific professions when analyzing 
+  titlePanel("Possible Limitations"),
+  p(style = "font-size:16px;", strong("One possible limitation with this data is that we are unable to consider specific professions when analyzing 
                                           the dataset. Since this feature is not included in the dataset, we instead need to analyze the amount of sleep 
                                           with other relevant features such as time spent working. Another possible problem with this dataset is the noise 
                                           (or outliers) in the dataset. Since it is very common for datasets to include outliers, these outliers may cause 
@@ -120,15 +146,15 @@ being made through a person’s characteristics and their sleep behavior which c
                                           wages are on average higher. For example, Country A may have an extremely high average wage whereas Country B may 
                                           have a lower average wage, however, if the dataset was collected from Country A it may lead us to believe that a 
                                           higher wage has a much larger effect on the amount of sleep than it actually does.")),
-        titlePanel("Possible Limitations"),
-        p(style = "font-size:16px;", strong("Ultimately, our project explores
+  titlePanel("Possible Limitations"),
+  p(style = "font-size:16px;", strong("Ultimately, our project explores
     questions regarding the trends of
   food insecurity over time, food gaps between different races, and
   the success of food assistance programs, as well as the existence
   of potential
   food deserts.")),
-        titlePanel("Implications"),
-        p(style = "font-size:16px;", strong("Following our research into the topic of how age and work-life correlates to the amount of sleep we have a 
+  titlePanel("Implications"),
+  p(style = "font-size:16px;", strong("Following our research into the topic of how age and work-life correlates to the amount of sleep we have a 
                                             few expected or possible implications. Firstly, one expected implication for policymakers is that they can 
                                             take this research into consideration when on the topic of work hours at their company. For example, companies 
                                             can utilize this research to create a more healthy work-life balance if it is discovered that less amount of 
@@ -140,8 +166,8 @@ being made through a person’s characteristics and their sleep behavior which c
                                             wage. For example, if it is discovered that an employee who has a good amount of sleep and high work experience 
                                             is extremely effective in the workplace, designers can take this into consideration and maybe consider less 
                                             working hours for those with higher experience in order to make the work produced even more effective.")),
-        titlePanel("Limitations and Challenges"),
-        p(style = "font-size:16px;", strong("Some of the limitations and challenges with this dataset is that, we don’t have access to a column that 
+  titlePanel("Limitations and Challenges"),
+  p(style = "font-size:16px;", strong("Some of the limitations and challenges with this dataset is that, we don’t have access to a column that 
                                             contains the person’s occupation. Having access to this data, in addition to the data that we are currently 
                                             analyzing, would allow us to make a stronger connection between work-life balance as we could understand 
                                             different types and occupations (labor intensive, office/desk job), and how they could factor into our dataset. 
@@ -153,6 +179,7 @@ being made through a person’s characteristics and their sleep behavior which c
                                             with our data, knowing this information could make our correlation more thorough and let us tell a better story 
                                             with our data.")),
 )
+
 
 chart_1_title <- titlePanel("Correlation Between Age and Average Hours Slept Per Day")
 
